@@ -17,7 +17,13 @@ const io = socket(server, {
 })
 
 players = []
-games = []
+games = [
+    {
+        id: 1,
+        board: [],
+        hostName: "HOstName"
+    }
+]
 
 io.on("connection", function(socket){
     console.log("XD")
@@ -27,5 +33,7 @@ io.on("connection", function(socket){
         socket.emit("id?", [id])
         console.log(players)
     })
-    socket.emit("availableGames", games)
+    socket.on("getGames", (data)=>{
+        socket.emit("?getGames", games)
+    })
 })
