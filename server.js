@@ -32,4 +32,7 @@ io.on("connection", function(socket){
         let game = new Game(games.length+1, new Player(data[0]))
         games.push(game)
     })
+    socket.on("joinGame", (data) => {
+        
+    })
 })

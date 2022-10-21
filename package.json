@@ -4,6 +4,7 @@
     "socket.io": "^4.5.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "startDebug": "node game.js"
   }
 }
