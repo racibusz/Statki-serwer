@@ -1,7 +1,7 @@
 const express = require("express")
 const socket=  require("socket.io")
 
-const port = 21375
+const port = 21374
 const app = express();
 
 
@@ -25,6 +25,7 @@ games = [
 ]
 
 io.on("connection", function(socket){
+    console.log("Connection From: ", socket)
     socket.on("getGames", (data)=>{
         socket.emit("?getGames", games)
     })

@@ -1,6 +1,8 @@
 class Game {
     constructor(id) {
         this.id = id
+        this.p1 = null
+        this.p2 = null
     }
 }
 
