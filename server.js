@@ -20,25 +20,30 @@ const io = socket(server, {
     }
 })
 
-players = []
 games = [
 ]
 
 io.on("connection", function(socket){
     socket.on('hello', (data)=>{
-        console.log("connected: ", data[0])
+        console.clear()
+        console.log("connection from " + data)
     })
     socket.on("getGames", (data)=>{
         socket.emit("?getGames", games)
     })
     socket.on("createGame", (data)=>{
-        let game = new Game(games.length+1)
+        if(data[0].length <=5){
+            return;
+        }
+        let game = new Game(games.length+1, new Player(data[0]))
+        // Data[0] == nazwa Hosta
         games.push(game)
     })
     socket.on("joinGame", (data) => {
         
     })
     socket.on("disconnect", ()=>{
-        console.log("Connection stopped")
+        console.clear()
+        console.log("disconnection")
     })
 })

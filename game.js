@@ -1,7 +1,7 @@
 class Game {
-    constructor(id) {
+    constructor(id, host) {
         this.id = id
-        this.p1 = null
+        this.p1 = host
         this.p2 = null
     }
 }
