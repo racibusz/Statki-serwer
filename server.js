@@ -20,8 +20,7 @@ const io = socket(server, {
     }
 })
 
-games = [
-]
+games = []
 
 io.on("connection", function(socket){
     socket.on('hello', (data)=>{
