@@ -24,6 +24,7 @@ games = []
 
 io.on("connection", function(socket){
     socket.on('hello', (data)=>{
+        console.log(`Connection From ${data[0]}`)
         socket.emit("?hello", [data])
     })
     socket.on("getGames", (data)=>{
@@ -42,7 +43,6 @@ io.on("connection", function(socket){
         console.log(games.find(game => game.id = data[0]))
     })
     socket.on("disconnect", ()=>{
-        console.clear()
         console.log("disconnection")
     })
 })
