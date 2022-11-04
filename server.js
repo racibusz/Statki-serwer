@@ -1,5 +1,5 @@
 const express = require("express")
-const socket=  require("socket.io")
+const socket=  require("socket.io");
 
 const port = 21374
 const app = express();
@@ -28,10 +28,12 @@ io.on("connection", function(socket){
         socket.emit("?hello", [data])
     })
     socket.on("getGames", (data)=>{
+        console.log('GetGames')
+        console.log(games)
         socket.emit("?getGames", games)
     })
     socket.on("createGame", (data)=>{
-        if(data[0].length <=5){
+        if(data[0].length <=1){
             return;
         }
         let game = new Game(games.length+1, new Player(data[0]))
