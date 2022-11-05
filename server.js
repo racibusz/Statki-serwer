@@ -20,8 +20,7 @@ const io = socket(server, {
     }
 })
 
-games = [
-]
+games = []
 
 io.on("connection", function(socket){
     socket.on('hello', (data)=>{
@@ -29,12 +28,10 @@ io.on("connection", function(socket){
         socket.emit("?hello", [data])
     })
     socket.on("getGames", (data)=>{
-        console.log(games)
         socket.emit("?getGames", games)
     })
     socket.on("createGame", (data)=>{
-        console.log("New Game", data[0])
-        if(data[0].length <5){
+        if(data[0].length <=5){
             return;
         }
         
