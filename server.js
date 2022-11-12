@@ -40,6 +40,12 @@ io.on("connection", function(socket){
         games.push(game)
         console.log(games)
     })
+
+    socket.on("getDetails", (data) => {
+        console.log(data)
+        return data[0]
+    })
+
     socket.on("joinGame", (data) => {
         console.log(games)
         console.log(games.find(game => game.id = data[0]))

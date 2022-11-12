@@ -115,8 +115,3 @@ class Ship {
         }
     }
 }
-
-p1 = new Player("Majsions")
-p1.placeShip([0, 0], [0, 3])
-p1.board.shoot([0, 1])
-console.log(p1.board.Ships)
