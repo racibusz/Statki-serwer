@@ -20,12 +20,15 @@ const io = socket(server, {
     }
 })
 
+usersConnected = []
 games = []
 
 io.on("connection", function(socket){
     socket.on('hello', (data)=>{
         console.log(`Connection From ${data[0]}`)
         socket.emit("?hello", [data])
+        usersConnected.push(data[0])
+        console.log(usersConnected)
     })
     socket.on("getGames", (data)=>{
         socket.emit("?getGames", games)
@@ -50,7 +53,9 @@ io.on("connection", function(socket){
         console.log(games)
         console.log(games.find(game => game.id = data[0]))
     })
-    socket.on("disconnect", ()=>{
+    socket.on("disconnectingEvent", (data)=>{
         console.log("disconnection")
+        usersConnected = usersConnected.filter(e=>e!==data[0])
+        console.log(usersConnected)
     })
 })
